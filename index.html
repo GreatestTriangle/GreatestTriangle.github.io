@@ -1,8 +1,95 @@
-<html>
-  <center>
-    <h1> Crusader Kings 3 </h1>
-    <h2>Creation space for Coat of Arms</h2>
-    <br><br><br><br><br>
-    <img src="patterns_png/pattern_chief.png">
-  </center>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Color Editor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    .filter-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .sliders {
+      margin-top: 20px;
+    }
+    .slider {
+      margin: 10px 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Color Editor</h1>
+    <div class="image-wrapper">
+      <img src="your-image.jpg" alt="Editable" id="base-image">
+      <!-- Color layers -->
+      <div class="filter-layer" id="red-layer" style="background: rgba(255, 0, 0, 0);"></div>
+      <div class="filter-layer" id="green-layer" style="background: rgba(0, 255, 0, 0);"></div>
+      <div class="filter-layer" id="blue-layer" style="background: rgba(0, 0, 255, 0);"></div>
+    </div>
+    <div class="sliders">
+      <!-- Sliders for each color -->
+      <div class="slider">
+        <label for="red-slider">Red Intensity</label>
+        <input type="range" id="red-slider" min="0" max="1" step="0.01" value="0">
+      </div>
+      <div class="slider">
+        <label for="green-slider">Green Intensity</label>
+        <input type="range" id="green-slider" min="0" max="1" step="0.01" value="0">
+      </div>
+      <div class="slider">
+        <label for="blue-slider">Blue Intensity</label>
+        <input type="range" id="blue-slider" min="0" max="1" step="0.01" value="0">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JS to handle slider changes
+    document.getElementById("red-slider").addEventListener("input", (e) => {
+      const value = e.target.value;
+      document.getElementById("red-layer").style.background = `rgba(255, 0, 0, ${value})`;
+    });
+
+    document.getElementById("green-slider").addEventListener("input", (e) => {
+      const value = e.target.value;
+      document.getElementById("green-layer").style.background = `rgba(0, 255, 0, ${value})`;
+    });
+
+    document.getElementById("blue-slider").addEventListener("input", (e) => {
+      const value = e.target.value;
+      document.getElementById("blue-layer").style.background = `rgba(0, 0, 255, ${value})`;
+    });
+  </script>
+</body>
 </html>
+
